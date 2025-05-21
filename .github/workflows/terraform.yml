@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  plan:
     name: 'Terraform Plan'
     runs-on: self-hosted
     environment: production
@@ -54,6 +54,7 @@ jobs:
     name: 'Terraform Apply'
     runs-on: self-hosted
     environment: production
+    needs: ["plan"]
 
     defaults:
       run:
