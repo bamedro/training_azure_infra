@@ -42,7 +42,7 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       env:
-        TF_VAR_name: briantf2
+        TF_VAR_name: ${{ vars.TF_VAR_NAME }}
       run: terraform plan -input=false -out plan.out
 
     - name: Plan summary
