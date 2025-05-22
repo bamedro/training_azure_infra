@@ -64,6 +64,9 @@ jobs:
     environment: production
     needs: ["plan"]
 
+    env:
+      AA_ENV_VARIABLE: ${{ vars.TF_VAR_NAME }}
+
     defaults:
       run:
         shell: bash
