@@ -79,7 +79,7 @@ jobs:
 
     - name: Tests
       env:
-        AA_STEP_VAR = "this is a step env var"
+        AA_STEP_VAR: "this is a step env var"
       run: |
         echo "Github Env variable: ${{ vars.TF_VAR_NAME }}"
         export
