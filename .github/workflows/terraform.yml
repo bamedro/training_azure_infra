@@ -2,7 +2,9 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+    - dev
+    - production
   pull_request:
 
 env:
@@ -48,6 +50,9 @@ jobs:
         TF_VAR_name: briantf
       run: terraform plan -input=false -out plan.out
 
+    - name: Test
+      run: export
+
     - name: Plan summary
       run: terraform show -no-color plan.out >> $GITHUB_STEP_SUMMARY
 
@@ -61,7 +66,7 @@ jobs:
   apply:
     name: 'Terraform Apply'
     runs-on: self-hosted
-    environment: production
+    environment: ${{ github.ref_name }}
     needs: ["plan"]
 
     env:
